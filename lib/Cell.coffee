@@ -1,4 +1,6 @@
 class DeadCell
+  count: 0
+
   alive: false
   dead: true
 
@@ -9,6 +11,8 @@ class DeadCell
       new DeadCell
 
 class AliveCell
+  count: 1
+
   alive: true
   dead: false
 

@@ -1,10 +1,13 @@
-ns = require('../lib/Cell')
-DeadCell = ns.DeadCell
-AliveCell = ns.AliveCell
+cell = require('../lib/Cell')
+DeadCell = cell.DeadCell
+AliveCell = cell.AliveCell
 
 describe DeadCell, ->
   beforeEach ->
     @cell = new DeadCell
+  
+  it 'has a count of 0', ->
+    expect(@cell.count).toEqual(0)
 
   describe 'with 3 neighbors', ->
     it 'becomes alive', ->
@@ -17,6 +20,9 @@ describe DeadCell, ->
 describe AliveCell, ->
   beforeEach ->
     @cell = new AliveCell
+  
+  it 'has a count of 1', ->
+    expect(@cell.count).toEqual(1)
 
   describe 'with fewer than 2 neighbors', ->
     it 'dies', ->
