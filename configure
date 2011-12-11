@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# curl http://npmjs.org/install.sh | sh
+npm install
