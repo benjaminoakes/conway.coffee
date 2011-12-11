@@ -37,14 +37,18 @@ class World
     [-1, 0, 1].forEach (j) ->
       [-1, 0, 1].forEach (i) ->
         unless i == 0 && j == 0
-          sum += grid[y + j][x + i].count
+          if outer = grid[y + j]
+            if inner = outer[x + i]
+              sum += inner.count
 
     sum
 
   tick: ->
-    next = @grid.map (row) ->
-      row.map (cell) ->
-        cell.tick(0)
+    that = this
+
+    next = @grid.map (row, y) ->
+      row.map (cell, x) ->
+        cell.tick(that.countNeighbors(x, y))
 
     new World(next)
 

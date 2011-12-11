@@ -77,3 +77,46 @@ describe World, ->
         it 'causes extinction', ->
           next = @overPopulated.tick()
           expect(next.equals(@extinct)).toBeTruthy()
+
+    describe 'with a block', ->
+      it 'is a still life', ->
+        block = new World([
+          [0,0,0,0]
+          [0,1,1,0]
+          [0,1,1,0]
+          [0,0,0,0]
+        ])
+
+        expect(block.tick().equals(block)).toBeTruthy()
+
+    describe 'with a beehive', ->
+      it 'is a still life', ->
+        beehive = new World([
+          [0,0,0,0,0,0]
+          [0,0,1,1,0,0]
+          [0,1,0,0,1,0]
+          [0,0,1,1,0,0]
+          [0,0,0,0,0,0]
+        ])
+
+        expect(beehive.tick().equals(beehive)).toBeTruthy()
+
+    describe 'with a blinker', ->
+      it 'is an oscillator', ->
+        blinker1 = new World([
+          [0,0,0,0,0]
+          [0,0,1,0,0]
+          [0,0,1,0,0]
+          [0,0,1,0,0]
+          [0,0,0,0,0]
+        ])
+
+        blinker2 = new World([
+          [0,0,0,0,0]
+          [0,0,0,0,0]
+          [0,1,1,1,0]
+          [0,0,0,0,0]
+          [0,0,0,0,0]
+        ])
+
+        expect(blinker1.tick().equals(blinker2)).toBeTruthy()
