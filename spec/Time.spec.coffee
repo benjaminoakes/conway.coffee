@@ -2,7 +2,8 @@ Time = require('../lib/Time').Time
 
 describe Time, ->
   beforeEach ->
-    @subject = tick: ->
+    @subject =
+      tick: ->
     spyOn(@subject, 'tick')
     @time = new Time(@subject)
 
