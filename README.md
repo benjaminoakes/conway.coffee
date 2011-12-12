@@ -6,19 +6,23 @@ A simple CoffeeScript implementation of Conway's Game of Life.
 Building
 --------
 
-    ./configure
-    cake
-    cake spec
-    coffee bin/conway.coffee
-
 Rather than using the globally installed `cake` or `coffee`, you may wish to use `node_modules/.bin/*`.
+
+    ./configure
+    cake spec
+    cake build # Generates JavaScript for use with index.html
+
+Running
+-------
+
+    coffee bin/conway.coffee
 
 Contributing
 ------------
 
 Running tests:
 
-    cake test
+    cake spec
 
 Running tests automatically:
 
