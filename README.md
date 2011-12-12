@@ -7,17 +7,18 @@ Building
 --------
 
     ./configure
-    make
-    make test
+    cake
+    cake spec
     coffee bin/conway.coffee
-    # or: node_modules/.bin/coffee bin/conway.coffee
+
+Rather than using the globally installed `cake` or `coffee`, you may wish to use `node_modules/.bin/*`.
 
 Contributing
 ------------
 
 Running tests:
 
-    make test
+    cake test
 
 Running tests automatically:
 
