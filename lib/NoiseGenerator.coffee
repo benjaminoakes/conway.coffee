@@ -13,4 +13,8 @@ class NoiseGenerator
     grid
 
 if exports?
-  exports.NoiseGenerator = NoiseGenerator
+  e = exports
+else
+  e = window
+
+e.NoiseGenerator = NoiseGenerator
