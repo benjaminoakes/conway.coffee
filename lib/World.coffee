@@ -6,6 +6,8 @@ AliveCell = cell.AliveCell
 
 class World
   constructor: (grid) ->
+    @observers = []
+
     @grid = grid.map (row) ->
       row.map (rawCell) ->
         if rawCell == 0
@@ -52,5 +54,15 @@ class World
 
   tick: ->
     @grid = @next()
+    @notifyObservers('changed')
+  
+  registerObserver: (observer) ->
+    @observers.push(observer)
+
+  notifyObservers: (message) ->
+    that = this
+
+    @observers.forEach (observer) ->
+      observer.notify(message, that)
 
 exports.World = World

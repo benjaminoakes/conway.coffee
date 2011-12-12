@@ -131,3 +131,15 @@ describe World, ->
       spyOn(world, 'next').andReturn('next state')
       world.tick()
       expect(world.grid).toEqual('next state')
+
+  describe 'observing', ->
+    it 'notifies observers when a change occurs', ->
+      observer =
+        notify: ->
+      spyOn(observer, 'notify')
+
+      world = new World([])
+      world.registerObserver(observer)
+      world.tick()
+      
+      expect(observer.notify).wasCalledWith('changed', world)
