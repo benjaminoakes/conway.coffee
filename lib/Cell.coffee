@@ -22,5 +22,10 @@ class AliveCell
     else
       new AliveCell
 
-exports.DeadCell = DeadCell
-exports.AliveCell = AliveCell
+if exports?
+  e = exports
+else
+  e = window
+
+e.DeadCell = DeadCell
+e.AliveCell = AliveCell

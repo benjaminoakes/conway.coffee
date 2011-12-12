@@ -1,8 +1,7 @@
-_ = require('underscore')
-
-cell = require('../lib/Cell')
-DeadCell = cell.DeadCell
-AliveCell = cell.AliveCell
+if require?
+  cell = require('../lib/Cell')
+  DeadCell = cell.DeadCell
+  AliveCell = cell.AliveCell
 
 class World
   constructor: (grid) ->
@@ -65,4 +64,9 @@ class World
     @observers.forEach (observer) ->
       observer.notify(message, that)
 
-exports.World = World
+if exports?
+  e = exports
+else
+  e = window
+
+e.World = World

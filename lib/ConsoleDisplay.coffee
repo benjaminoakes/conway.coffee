@@ -5,4 +5,9 @@ class ConsoleDisplay
         console.log('---')
         console.dir(observable)
 
-exports.ConsoleDisplay = ConsoleDisplay
+if exports?
+  e = exports
+else
+  e = window
+
+e.ConsoleDisplay = ConsoleDisplay

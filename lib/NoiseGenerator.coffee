@@ -12,4 +12,5 @@ class NoiseGenerator
     
     grid
 
-exports.NoiseGenerator = NoiseGenerator
+if exports?
+  exports.NoiseGenerator = NoiseGenerator
