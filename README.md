@@ -1,6 +1,8 @@
 Conway
 ======
 
+A simple CoffeeScript implementation of Conway's Game of Life.
+
 Building
 --------
 
