@@ -43,13 +43,14 @@ class World
 
     sum
 
-  tick: ->
+  next: ->
     that = this
 
     next = @grid.map (row, y) ->
       row.map (cell, x) ->
-        cell.tick(that.countNeighbors(x, y))
+        cell.next(that.countNeighbors(x, y))
 
-    new World(next)
+  tick: ->
+    @grid = @next()
 
 exports.World = World

@@ -4,7 +4,7 @@ class DeadCell
   alive: false
   dead: true
 
-  tick: (neighborCount) ->
+  next: (neighborCount) ->
     if neighborCount == 3
       new AliveCell
     else
@@ -16,7 +16,7 @@ class AliveCell
   alive: true
   dead: false
 
-  tick: (neighborCount) ->
+  next: (neighborCount) ->
     if neighborCount < 2 || neighborCount > 3
       new DeadCell
     else

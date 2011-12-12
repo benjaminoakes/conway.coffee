@@ -62,7 +62,7 @@ describe World, ->
       ])
       expect(world.countNeighbors(1,1)).toEqual(8)
 
-  describe 'ticking', ->
+  describe 'the next state', ->
     describe 'with a 1-cell world', ->
       beforeEach ->
         @extinct = new World([[0]])
@@ -70,12 +70,12 @@ describe World, ->
 
       describe 'with no population', ->
         it 'does not populate', ->
-          next = @extinct.tick()
+          next = new World(@extinct.next())
           expect(next.equals(@extinct)).toBeTruthy()
 
       describe 'with an over populated world', ->
         it 'causes extinction', ->
-          next = @overPopulated.tick()
+          next = new World(@overPopulated.next())
           expect(next.equals(@extinct)).toBeTruthy()
 
     describe 'with a block', ->
@@ -86,8 +86,9 @@ describe World, ->
           [0,1,1,0]
           [0,0,0,0]
         ])
+        next = new World(block.next())
 
-        expect(block.tick().equals(block)).toBeTruthy()
+        expect(next.equals(block)).toBeTruthy()
 
     describe 'with a beehive', ->
       it 'is a still life', ->
@@ -98,8 +99,9 @@ describe World, ->
           [0,0,1,1,0,0]
           [0,0,0,0,0,0]
         ])
+        next = new World(beehive.next())
 
-        expect(beehive.tick().equals(beehive)).toBeTruthy()
+        expect(next.equals(beehive)).toBeTruthy()
 
     describe 'with a blinker', ->
       it 'is an oscillator', ->
@@ -110,6 +112,7 @@ describe World, ->
           [0,0,1,0,0]
           [0,0,0,0,0]
         ])
+        next = new World(blinker1.next())
 
         blinker2 = new World([
           [0,0,0,0,0]
@@ -119,4 +122,12 @@ describe World, ->
           [0,0,0,0,0]
         ])
 
-        expect(blinker1.tick().equals(blinker2)).toBeTruthy()
+        expect(next.equals(blinker2)).toBeTruthy()
+
+  describe 'ticking', ->
+    it 'replaces the grid with the next state', ->
+      world = new World([])
+      expect(world.grid).toEqual([])
+      spyOn(world, 'next').andReturn('next state')
+      world.tick()
+      expect(world.grid).toEqual('next state')
