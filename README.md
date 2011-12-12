@@ -21,3 +21,8 @@ Running tests:
 Running tests automatically:
 
     bundle exec guard
+
+License
+-------
+
+GPLv2.  See LICENSE for a copy.
