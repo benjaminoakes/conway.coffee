@@ -5,5 +5,10 @@ set -o errexit
 gem install bundler --version "~> 1.0" --no-rdoc --no-ri
 bundle install
 
-# curl http://npmjs.org/install.sh | sh
+hash npm 2>&- || {
+	echo "[error] npm not found"
+	echo "[info] Downloading installer.  Please run 'sudo bash install.sh'"
+	curl -O http://npmjs.org/install.sh
+	exit -1
+}
 npm install
