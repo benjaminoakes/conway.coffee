@@ -12,9 +12,5 @@ class NoiseGenerator
     
     grid
 
-if exports?
-  e = exports
-else
-  e = window
-
-e.NoiseGenerator = NoiseGenerator
+root = exports ? this
+root.NoiseGenerator = NoiseGenerator

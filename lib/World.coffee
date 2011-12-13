@@ -64,9 +64,5 @@ class World
     @observers.forEach (observer) ->
       observer.notify(message, that)
 
-if exports?
-  e = exports
-else
-  e = window
-
-e.World = World
+root = exports ? this
+root.World = World

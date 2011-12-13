@@ -8,9 +8,5 @@ class Time
     for i in [1..duration]
       @tick()
 
-if exports?
-  e = exports
-else
-  e = window
-
-e.Time = Time
+root = exports ? this
+root.Time = Time

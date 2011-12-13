@@ -5,9 +5,5 @@ class ConsoleDisplay
         console.log('---')
         console.dir(observable)
 
-if exports?
-  e = exports
-else
-  e = window
-
-e.ConsoleDisplay = ConsoleDisplay
+root = exports ? this
+root.ConsoleDisplay = ConsoleDisplay
