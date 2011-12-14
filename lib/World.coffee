@@ -45,11 +45,9 @@ class World
     sum
 
   next: ->
-    that = this
-
-    next = @grid.map (row, y) ->
-      row.map (cell, x) ->
-        cell.next(that.countNeighbors(x, y))
+    next = @grid.map (row, y) =>
+      row.map (cell, x) =>
+        cell.next(@countNeighbors(x, y))
 
   tick: ->
     @grid = @next()
@@ -59,10 +57,8 @@ class World
     @observers.push(observer)
 
   notifyObservers: (message) ->
-    that = this
-
-    @observers.forEach (observer) ->
-      observer.notify(message, that)
+    @observers.forEach (observer) =>
+      observer.notify(message, this)
 
 root = exports ? this
 root.World = World
