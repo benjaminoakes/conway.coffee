@@ -1,8 +1,8 @@
 #!/usr/bin/env coffee
-Time = require('../lib/Time').Time
-World = require('../lib/World').World
-NoiseGenerator = require('../lib/NoiseGenerator').NoiseGenerator
-ConsoleDisplay = require('../lib/ConsoleDisplay').ConsoleDisplay
+{Time} = require('../lib/Time')
+{World} = require('../lib/World')
+{NoiseGenerator} = require('../lib/NoiseGenerator')
+{ConsoleDisplay} = require('../lib/ConsoleDisplay')
 
 grid = (new NoiseGenerator).generate(25, 25)
 world = new World(grid)

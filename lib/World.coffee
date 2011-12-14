@@ -1,7 +1,5 @@
 if require?
-  cell = require('../lib/Cell')
-  DeadCell = cell.DeadCell
-  AliveCell = cell.AliveCell
+  {DeadCell, AliveCell} = require('../lib/Cell')
 
 class World
   constructor: (grid) ->
