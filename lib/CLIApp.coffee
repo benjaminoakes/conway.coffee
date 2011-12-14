@@ -22,6 +22,7 @@ class CLIApp
 
         --help              Show this help text.
         generationCount     Run for this many generations (e.g., 1, 10, 100, etc)
+                            Default: #{@defaultCount}
     """)
     process.exit(-1)
 
