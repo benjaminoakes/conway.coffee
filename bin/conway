@@ -1,12 +1,5 @@
 #!/usr/bin/env coffee
-{Time} = require('../lib/Time')
-{World} = require('../lib/World')
-{NoiseGenerator} = require('../lib/NoiseGenerator')
-{ConsoleDisplay} = require('../lib/ConsoleDisplay')
+{CLIApp} = require('../lib/CLIApp')
 
-grid = (new NoiseGenerator).generate(25, 25)
-world = new World(grid)
-world.registerObserver(new ConsoleDisplay)
-
-time = new Time(world)
-time.pass(100)
+app = new CLIApp(process.argv)
+app.start()
