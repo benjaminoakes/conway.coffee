@@ -1,3 +1,4 @@
+#!/usr/bin/env coffee
 Time = require('../lib/Time').Time
 World = require('../lib/World').World
 NoiseGenerator = require('../lib/NoiseGenerator').NoiseGenerator
