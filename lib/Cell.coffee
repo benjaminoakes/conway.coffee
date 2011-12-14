@@ -8,7 +8,7 @@ class DeadCell
     if neighborCount == 3
       new AliveCell
     else
-      new DeadCell
+      this
 
 class AliveCell
   count: 1
@@ -20,7 +20,7 @@ class AliveCell
     if neighborCount < 2 || neighborCount > 3
       new DeadCell
     else
-      new AliveCell
+      this
 
 root = exports ? this
 root.DeadCell = DeadCell
