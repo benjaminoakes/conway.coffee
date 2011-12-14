@@ -15,7 +15,14 @@ class CLIApp
     @bigBang()
 
   showUsage: ->
-    console.log("Usage: #{@progname} [--help] [generationCount]")
+    console.log("""
+      Usage: #{@progname} [--help] [generationCount]
+
+      Simple implementation of Conway's Game of Life
+
+        --help              Show this help text.
+        generationCount     Run for this many generations (e.g., 1, 10, 100, etc)
+    """)
     process.exit(-1)
 
   processArgs: ->
