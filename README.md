@@ -16,10 +16,15 @@ Or, if that wears out your fingers, add it to your path:
 
     PATH="node_modules/.bin:$PATH"
 
-Running
--------
+Usage
+-----
 
-    coffee bin/conway.coffee
+    Usage: conway [--help] [generationCount]
+
+    Simple implementation of Conway's Game of Life
+    
+      --help              Show this help text.
+      generationCount     Run for this many generations (e.g., 1, 10, 100, etc)
 
 Contributing
 ------------
