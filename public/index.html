@@ -2,6 +2,13 @@
 <script src="../build/CanvasDisplay.js"></script>
 <canvas id="canvas" width="200" height="200"></canvas>
 <script>
+if (!!window.Worker) {
+  var worker = new Worker('worker.js');
+  worker.onmessage = function (event) {
+    console.dir(event.data);
+  };
+}
+
 var ctx = document.getElementById('canvas').getContext('2d');
 ctx.fillStyle = 'rgba(0,0,0,1)';
 
@@ -35,11 +42,4 @@ var grid = (new NoiseGenerator).generate(200, 200),
 world.registerObserver(canvasDisplay);
 
 time.pass(40);
-
-if (!!window.Worker) {
-  var worker = new Worker('worker.js');
-  worker.onmessage = function (event) {
-    console.dir(event.data);
-  };
-}
 </script>
