@@ -1,7 +1,8 @@
-{Time} = require('../lib/Time')
-{World} = require('../lib/World')
-{NoiseGenerator} = require('../lib/NoiseGenerator')
-{ConsoleDisplay} = require('../lib/ConsoleDisplay')
+if require?
+  {Time} = require('../lib/Time')
+  {World} = require('../lib/World')
+  {NoiseGenerator} = require('../lib/NoiseGenerator')
+  {ConsoleDisplay} = require('../lib/ConsoleDisplay')
 
 class CLIApp
   defaultCount: 100

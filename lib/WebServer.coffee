@@ -1,5 +1,6 @@
-http   = require('http')
-static = require('node-static')
+if require?
+  http   = require('http')
+  static = require('node-static')
 
 class WebServer
   start: (port = 8080) ->

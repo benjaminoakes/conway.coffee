@@ -1,14 +1,13 @@
-<!-- FIXME should be conway.js -->
-<script src="../build/CanvasDisplay.js"></script>
-<canvas id="canvas" width="200" height="200"></canvas>
-<script>
-if (!!window.Worker) {
-  var worker = new Worker('worker.js');
-  worker.onmessage = function (event) {
-    console.dir(event.data);
-  };
-}
+<h2>Conway's Game of Life</h2>
 
+<p>
+<a href="http://en.wikipedia.org/wiki/Conway%27s_game_of_life">Wikipedia Article</a>
+</p>
+
+<!-- FIXME should be conway.js -->
+<canvas id="canvas" width="200" height="200"></canvas>
+<script src="build/conway.js"></script>
+<script>
 var ctx = document.getElementById('canvas').getContext('2d');
 ctx.fillStyle = 'rgba(0,0,0,1)';
 
@@ -16,30 +15,18 @@ var point = function (x, y) {
   ctx.fillRect(x, y, 1, 1);
 }
 
-// Works as a proof-of-concept, but it's slow.
-var canvasDisplay = {
-	notify: function (message, observable) {
-		var dup = new World(observable.grid);
+if (!!window.Worker) {
+  var worker = new Worker('worker.js');
+  worker.onmessage = function (event) {
+    var data = event.data;
 
-		setTimeout(function () {
-			ctx.clearRect(0,0,200,200);
-			dup.grid.forEach(function (row, y) {
-				row.forEach(function (cell, x) {
-					if (cell.alive) {
-						point(x, y);
-					}
-				});
-			});
-		}, 10);
-	}
-};
-
-var grid = (new NoiseGenerator).generate(200, 200),
-		world = new World(grid),
-		time = new Time(world);
-
-// world.registerObserver(new ConsoleDisplay);
-world.registerObserver(canvasDisplay);
-
-time.pass(40);
+    if (data.message == 'clear') {
+      ctx.clearRect(0,0,200,200);
+    } else if (data.message == 'points') {
+      JSON.parse(data.coords).forEach(function (coord) {
+        point(coord[0], coord[1]);
+      });
+    }
+  };
+}
 </script>

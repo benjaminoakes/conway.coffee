@@ -2,7 +2,7 @@
 rmrf  = require('rimraf')
 
 task 'build', 'Compile CoffeeScript into a single JavaScript file', ->
-  exec 'node_modules/.bin/coffee --output build --compile --join lib/*.coffee', (err, stdout, stderr) ->
+  exec 'node_modules/.bin/coffee --output public/build --compile --join conway.js lib/*.coffee', (err, stdout, stderr) ->
     throw err if err
     console.log(stdout + stderr)
 
