@@ -1,0 +1,6 @@
+#!/usr/bin/env coffee
+{WebServer} = require('../lib/WebServer')
+
+server = new WebServer()
+port = server.start()
+console.log("Listening on #{port}")
