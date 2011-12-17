@@ -1,4 +1,5 @@
 if require?
+  _ = require('underscore')
   {ConsoleDisplay} = require('../lib/ConsoleDisplay')
   {Producer} = require('../lib/Producer')
 
@@ -8,6 +9,8 @@ class CLIApp
   constructor: (args) ->
     @args = args
     @progname = @args[1]
+    @processArgs()
+
     @producer = new Producer
     @producer.registerObserver(new ConsoleDisplay)
 
@@ -24,13 +27,12 @@ class CLIApp
     process.exit(-1)
 
   processArgs: ->
-    if @args.some((s) -> '--help' == s)
+    if _.include(@args, '--help')
       @showUsage()
     else
-      @generationCount = parseInt(@args[2]) || @defaultCount
+      @generationCount = Number(@args[2]) || @defaultCount
 
   start: ->
-    @processArgs()
     @producer.produce(@generationCount)
 
 root = exports ? this

@@ -4,7 +4,8 @@
   "dependencies": {
     "coffee-script": "1.1.2",
     "jasmine-node": "1.0.13",
-    "node-static": "0.5.9"
+    "node-static": "0.5.9",
+    "underscore": "1.2.3"
   },
   "devDependencies": {
     "rimraf": "1.0.9"
