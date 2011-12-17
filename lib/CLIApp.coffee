@@ -1,8 +1,6 @@
 if require?
-  {Time} = require('../lib/Time')
-  {World} = require('../lib/World')
-  {NoiseGenerator} = require('../lib/NoiseGenerator')
   {ConsoleDisplay} = require('../lib/ConsoleDisplay')
+  {Producer} = require('../lib/Producer')
 
 class CLIApp
   defaultCount: 100
@@ -10,10 +8,8 @@ class CLIApp
   constructor: (args) ->
     @args = args
     @progname = @args[1]
-
-  start: ->
-    @processArgs()
-    @bigBang()
+    @producer = new Producer
+    @producer.registerObserver(new ConsoleDisplay)
 
   showUsage: ->
     console.log("""
@@ -33,13 +29,9 @@ class CLIApp
     else
       @generationCount = parseInt(@args[2]) || @defaultCount
 
-  bigBang: ->
-    grid = (new NoiseGenerator).generate(25, 25)
-    world = new World(grid)
-    world.registerObserver(new ConsoleDisplay)
-    
-    time = new Time(world)
-    time.pass(@generationCount)
+  start: ->
+    @processArgs()
+    @producer.produce(@generationCount)
 
 root = exports ? this
 root.CLIApp = CLIApp
